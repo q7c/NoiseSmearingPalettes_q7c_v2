@@ -96,7 +96,7 @@ void setup() {
   FastLED.addLeds<CHIPSET, LED_PIN, COLOR_ORDER>(leds[0], leds.Size());
   FastLED.setBrightness(250);
   FastLED.clear(true);
-
+  FastLED.setMaxPowerInVoltsAndMilliamps(5,900); 
 
   // Initialize Matrix
 //  matrix.addLayer(&backgroundLayer);
@@ -135,9 +135,9 @@ void loop() {
   nblendPaletteTowardPalette( currentPalette, targetPalette, maxChanges);
 
   // Call the current pattern function once, updating the 'leds' array
-  //gPlaylist[gCurrentTrackNumber].mPattern();
+  gPlaylist[gCurrentTrackNumber].mPattern();
 
-  PaletteSmear();
+  //PaletteSmear();
   //MultipleStream();
   //MultipleStream2();
   //MultipleStream3();
@@ -612,8 +612,8 @@ void MultipleStream5() {
   DimAll(235);
 
 
-  for (uint8_t i = 3; i < 32; i = i + 4) {
-    leds( i, 31) += CHSV(i * 2, 255, 255);
+  for (uint8_t i = 3; i < 16; i = i + 4) {
+    leds(i, 15) += CHSV(i * 2, 255, 255);
   }
 
   // Noise
